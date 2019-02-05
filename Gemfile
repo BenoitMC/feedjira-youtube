@@ -8,4 +8,5 @@ group :test do
   gem "awesome_print"
   gem "pry"
   gem "rspec"
+  gem "rake"
 end
