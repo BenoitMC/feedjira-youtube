@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    feedjira-youtube (0.1.0)
+    feedjira-youtube (0.2.0)
       feedjira
 
 GEM
