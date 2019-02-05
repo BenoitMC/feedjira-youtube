@@ -7,6 +7,8 @@ module Feedjira
       element :"media:description", as: :summary
 
       def summary
+        return if super.nil?
+
         super
           .delete("\r")
           .gsub("\n", "<br/>\n")
