@@ -1,0 +1,12 @@
+language: ruby
+
+cache:
+  directories:
+   - /home/travis/.rvm/
+
+install:
+  - gem install bundler
+  - bundle install -j 5
+
+script:
+  - bundle exec rspec
