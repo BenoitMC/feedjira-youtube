@@ -7,6 +7,7 @@ Differences with the original parser :
 - it add `<br>` tags to `#summary`
 - it add `<br>` tags to `#content`
 - it add player to `#content`
+- it replace URLs by links
 
 ```ruby
 gem "feedjira-youtube"

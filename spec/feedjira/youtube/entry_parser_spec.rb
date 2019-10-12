@@ -2,8 +2,14 @@ RSpec.describe Feedjira::Youtube::EntryParser do
   let!(:feed) { Feedjira.parse(sample_youtube_atom_feed) }
   let!(:entry) { feed.entries.first }
 
-  it "should return summary and add br tags" do
-    expect(entry.summary).to eq "A question is the most powerful force in the world.<br/>\nIt can start you on an adventure or spark a connection. See where a question can take you. The Google app is available on iOS and Android. Download the app here: http://www.google.com/search/about/download"
+  it "should return summary, add br tags, and create links" do
+    expect(entry.summary).to eq %(A question is the most powerful force in the world.<br/>\nIt can start you on an adventure or spark a connection. See where a question can take you. The Google app is available on iOS and Android. Download the app here: <a href="http://www.google.com/search/about/download">http://www.google.com/search/about/download</a>)
+  end
+
+  it "should not create link for other protocols" do
+    xml = sample_youtube_atom_feed.gsub("http://www.google.com/search/about/download", "ftp://test")
+    entry = Feedjira.parse(xml).entries.first
+    expect(entry.summary).to_not include "<a"
   end
 
   it "should not try to add br tags if summary is nil" do

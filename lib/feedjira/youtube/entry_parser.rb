@@ -1,6 +1,8 @@
 module Feedjira
   module Youtube
     class EntryParser < Parser::AtomYoutubeEntry
+      LINK_REGEXP = URI.regexp(%w(http https))
+
       sax_config.top_level_elements.delete("media:description")
       sax_config.top_level_elements.delete("summary")
 
@@ -12,6 +14,7 @@ module Feedjira
         super
           .delete("\r")
           .gsub("\n", "<br/>\n")
+          .gsub(LINK_REGEXP) { %(<a href="#{$&}">#{$&}</a>) }
       end
 
       def content
