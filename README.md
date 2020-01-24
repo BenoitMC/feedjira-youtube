@@ -9,6 +9,10 @@ Differences with the original parser :
 - it add player to `#content`
 - it replace URLs by links
 
+## Usage
+
+Just add the gem to your Gemfile.
+
 ```ruby
 gem "feedjira-youtube"
 ```
@@ -16,10 +20,6 @@ gem "feedjira-youtube"
 And then execute:
 
     $ bundle
-
-## Usage
-
-Just add the gem to your Gemfile.
 
 ## License
 
